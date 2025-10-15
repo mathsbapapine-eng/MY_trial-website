@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JA FUTURISTIC AI - Empowering Jamaica's Future</title>
+    <title>YardTech AI - Empowering Jamaica's Future</title>
     <style>
         * {
             margin: 0;
@@ -254,7 +254,7 @@
             text-align: center;
         }
 
-        .mission h2 {
+        .mission h2, .vision h2 {
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 2rem;
             background: linear-gradient(135deg, #FFD700 0%, #009B48 100%);
@@ -263,12 +263,19 @@
             background-clip: text;
         }
 
-        .mission p {
+        .mission p, .vision p {
             font-size: 1.2rem;
             line-height: 1.8;
             color: rgba(255, 255, 255, 0.8);
             max-width: 800px;
             margin: 0 auto 3rem;
+        }
+
+        .vision {
+            padding: 3rem 5% 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .features {
@@ -337,6 +344,81 @@
             line-height: 1.6;
         }
 
+        .team-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #FFD700 0%, #009B48 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 155, 72, 0.1);
+            border-color: rgba(0, 155, 72, 0.4);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #FFD700 0%, #009B48 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: #009B48;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-bio {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
@@ -399,6 +481,10 @@
                 width: 50px;
                 height: 50px;
             }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -410,12 +496,12 @@
         <nav>
             <div class="logo">
                 <span class="flag-icon">🇯🇲</span>
-                JAFUTURISTIC AI
+                YardTech AI
             </div>
             <ul class="nav-links">
-                <li><a href="#mission">Our Mission</a></li>
+                <li><a href="#mission">Mission</a></li>
                 <li><a href="#programs">Programs</a></li>
-                <li><a href="#impact">Impact</a></li>
+                <li><a href="#team">Team</a></li>
                 <li><a href="#donate">Support Us</a></li>
             </ul>
         </nav>
@@ -440,11 +526,23 @@
         <section class="mission" id="mission">
             <h2>Our Mission</h2>
             <p>
-                JAFUTURISTIC AI is dedicated to providing free, world-class artificial intelligence 
+                YardTech AI is dedicated to providing free, world-class artificial intelligence 
                 education to Black youth in Jamaica. We believe that every child deserves access 
                 to the skills that will shape tomorrow's world. Through hands-on learning, 
                 mentorship, and community support, we're creating opportunities for young Jamaicans 
                 to become the innovators, entrepreneurs, and leaders of the AI revolution.
+            </p>
+        </section>
+
+        <section class="vision">
+            <h2>Our Vision</h2>
+            <p>
+                We envision a future where Jamaica is recognized as a global hub for AI innovation 
+                and technological excellence. Our vision is to empower every Jamaican youth with 
+                the knowledge, skills, and confidence to compete on the world stage, while using 
+                technology to uplift their communities and preserve our rich cultural heritage. 
+                We see a Jamaica where technology and tradition work hand in hand to create 
+                sustainable prosperity for all.
             </p>
         </section>
 
@@ -483,6 +581,61 @@
                 <div class="feature-icon">✨</div>
                 <h3>Cultural Pride <span class="pulse-dot"></span></h3>
                 <p>Celebrate Jamaican heritage while learning tech skills, proving that innovation and culture go hand in hand.</p>
+            </div>
+        </section>
+
+        <section class="team-section" id="team">
+            <h2>Meet Our Team</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">👤</div>
+                    <h3>[Founder Name]</h3>
+                    <div class="team-role">Founder</div>
+                    <p class="team-bio">[Add founder bio here - their background, passion for the mission, and vision for YardTech AI]</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">👤</div>
+                    <h3>[Director Name]</h3>
+                    <div class="team-role">Executive Director</div>
+                    <p class="team-bio">[Add director bio here - their leadership experience and commitment to youth education]</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">👤</div>
+                    <h3>[Finance Lead Name]</h3>
+                    <div class="team-role">Finance Executive</div>
+                    <p class="team-bio">[Add finance executive bio here - their financial expertise and dedication to organizational sustainability]</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">👤</div>
+                    <h3>[AI Specialist Name]</h3>
+                    <div class="team-role">AI Specialist</div>
+                    <p class="team-bio">[Add AI specialist bio here - their technical expertise and passion for teaching AI to young people]</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">👤</div>
+                    <h3>[Communications Lead Name]</h3>
+                    <div class="team-role">Communications Executive</div>
+                    <p class="team-bio">[Add communications executive bio here - their experience in outreach and community engagement]</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">👤</div>
+                    <h3>[Legal Advisor Name]</h3>
+                    <div class="team-role">Legal Executive</div>
+                    <p class="team-bio">[Add legal executive bio here - their legal background and commitment to protecting the organization's mission]</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">👤</div>
+                    <h3>[Secretary Name]</h3>
+                    <div class="team-role">Secretary</div>
+                    <p class="team-bio">[Add secretary bio here - their organizational skills and dedication to keeping operations running smoothly]</p>
+                </div>
             </div>
         </section>
     </div>
@@ -549,7 +702,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card').forEach(card => {
+        document.querySelectorAll('.feature-card, .team-member').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
