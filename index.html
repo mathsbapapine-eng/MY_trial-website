@@ -671,19 +671,24 @@
         });
 
         // Music control
-        const musicControl = document.getElementById('musicControl');
         const reggaeMusic = document.getElementById('reggaeMusic');
+        const musicControl = document.getElementById('musicControl');
         let isPlaying = false;
 
         musicControl.addEventListener('click', () => {
             if (isPlaying) {
-                reggaeMusic.pause();
-                musicControl.classList.remove('playing');
+                music.pause();
                 isPlaying = false;
+                musicControl.querySelector('.music-icon').textContent = '🔇';
+                
             } else {
-                reggaeMusic.play();
-                musicControl.classList.add('playing');
-                isPlaying = true;
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicControl.querySelector('.music-icon').textContent = '🎶';
+                }).catch(err => {
+                    console.error('Play blocked by browser:', err);
+                    alert('Unable to play music. Please check your browser settings or try a different browser.');
+                });
             }
         });
 
