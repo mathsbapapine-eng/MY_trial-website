@@ -542,6 +542,144 @@
             font-style: italic;
         }
 
+        /* Program Structure Styles */
+        .programs-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 155, 72, 0.1);
+            border-color: rgba(0, 155, 72, 0.4);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .program-level {
+            background: linear-gradient(135deg, #FFD700 0%, #009B48 100%);
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .program-title {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .program-title h3 {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .program-name {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .program-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid #FFD700;
+        }
+
+        .meta-label {
+            color: #009B48;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .program-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .detail-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .detail-box h4 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detail-box li {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .detail-box li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #009B48;
+            font-weight: bold;
+        }
+
+        .level-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
@@ -601,6 +739,7 @@
             <ul class="nav-links">
                 <li><a href="#mission">Mission</a></li>
                 <li><a href="#videos">Videos</a></li>
+                <li><a href="#programs">Programs</a></li>
                 <li><a href="#register">Register</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#donate">Donate</a></li>
@@ -618,7 +757,7 @@
                 </p>
                 <div class="cta-buttons">
                     <a href="#register" class="btn btn-primary">Join Our Program</a>
-                    <a href="#videos" class="btn btn-secondary">Watch Videos</a>
+                    <a href="#programs" class="btn btn-secondary">View Programs</a>
                 </div>
             </div>
         </section>
@@ -632,6 +771,287 @@
                 mentorship, and community support, we're creating opportunities for young Jamaicans 
                 to become the innovators, entrepreneurs, and leaders of the AI revolution.
             </p>
+        </section>
+
+        <section class="programs-section" id="programs">
+            <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 3rem; text-align: center; background: linear-gradient(135deg, #FFD700 0%, #009B48 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our Program Structure</h2>
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.8); max-width: 800px; margin: 0 auto 4rem; font-size: 1.1rem;">
+                From beginner to entrepreneur, we guide you through a comprehensive AI learning journey
+            </p>
+
+            <!-- Level 1: AI Foundation -->
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-level">Level 1: AI Foundation</div>
+                    <div class="program-title">
+                        <h3>AI First Steps</h3>
+                        <div class="program-name">Digital Literacy for Everyone</div>
+                    </div>
+                </div>
+
+                <div class="program-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Duration</div>
+                        <div class="meta-value">4–6 weeks</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Target Audience</div>
+                        <div class="meta-value">Beginners, students, professionals new to AI</div>
+                    </div>
+                </div>
+
+                <div class="program-details">
+                    <div class="detail-box">
+                        <h4>📚 Core Focus Areas</h4>
+                        <ul>
+                            <li>What is AI & how it works</li>
+                            <li>Everyday AI applications</li>
+                            <li>Prompt engineering basics</li>
+                            <li>AI safety & ethics</li>
+                            <li>Introduction to AI platforms</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🛠️ Key Tools & Technologies</h4>
+                        <ul>
+                            <li>ChatGPT</li>
+                            <li>Google AI tools</li>
+                            <li>Microsoft Copilot</li>
+                            <li>DeepSeek</li>
+                            <li>Midjourney/DALL·E</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🎯 Learning Outcomes</h4>
+                        <ul>
+                            <li>Confident use of AI tools</li>
+                            <li>Effective prompt crafting</li>
+                            <li>Understanding AI limits</li>
+                            <li>Awareness of ethical use</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2: AI Explorer -->
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-level">Level 2: AI Explorer</div>
+                    <div class="program-title">
+                        <h3>AI Power User Mastery</h3>
+                        <div class="program-name">Advanced Application & Automation</div>
+                    </div>
+                </div>
+
+                <div class="program-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Duration</div>
+                        <div class="meta-value">6–8 weeks</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Target Audience</div>
+                        <div class="meta-value">Tech-savvy users, creators, analysts</div>
+                    </div>
+                </div>
+
+                <div class="program-details">
+                    <div class="detail-box">
+                        <h4>📚 Core Focus Areas</h4>
+                        <ul>
+                            <li>Advanced prompt engineering</li>
+                            <li>AI workflow automation</li>
+                            <li>Multi-modal AI (text/image/audio)</li>
+                            <li>Creativity/productivity use</li>
+                            <li>Custom GPTs & agents</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🛠️ Key Tools & Technologies</h4>
+                        <ul>
+                            <li>ChatGPT Plus</li>
+                            <li>Claude</li>
+                            <li>Stable Diffusion</li>
+                            <li>ElevenLabs</li>
+                            <li>Automation platforms</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🎯 Learning Outcomes</h4>
+                        <ul>
+                            <li>Automation skills</li>
+                            <li>Multi-platform integration</li>
+                            <li>Custom AI creation</li>
+                            <li>Advanced AI solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: AI Developer -->
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-level">Level 3: AI Developer</div>
+                    <div class="program-title">
+                        <h3>AI Engineering & ML Fundamentals</h3>
+                        <div class="program-name">Build Your First AI Models</div>
+                    </div>
+                </div>
+
+                <div class="program-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Duration</div>
+                        <div class="meta-value">12–16 weeks</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Target Audience</div>
+                        <div class="meta-value">Aspiring developers, CS students, tech professionals</div>
+                    </div>
+                </div>
+
+                <div class="program-details">
+                    <div class="detail-box">
+                        <h4>📚 Core Focus Areas</h4>
+                        <ul>
+                            <li>Python for AI/ML</li>
+                            <li>ML fundamentals</li>
+                            <li>Neural networks</li>
+                            <li>Model training & fine-tuning</li>
+                            <li>API integration</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🛠️ Key Tools & Technologies</h4>
+                        <ul>
+                            <li>PyTorch/TensorFlow</li>
+                            <li>Scikit-learn</li>
+                            <li>OpenAI API</li>
+                            <li>Hugging Face</li>
+                            <li>LangChain, Google Colab</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🎯 Learning Outcomes</h4>
+                        <ul>
+                            <li>Basic model development</li>
+                            <li>API integration skills</li>
+                            <li>Model fine-tuning</li>
+                            <li>System design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 4: AI Innovator -->
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-level">Level 4: AI Innovator</div>
+                    <div class="program-title">
+                        <h3>Applied AI & Competition Ready</h3>
+                        <div class="program-name">Real-World Problem Solving</div>
+                    </div>
+                </div>
+
+                <div class="program-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Duration</div>
+                        <div class="meta-value">16–20 weeks</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Target Audience</div>
+                        <div class="meta-value">Advanced students, junior devs, innovators</div>
+                    </div>
+                </div>
+
+                <div class="program-details">
+                    <div class="detail-box">
+                        <h4>📚 Core Focus Areas</h4>
+                        <ul>
+                            <li>Real-world problem-solving</li>
+                            <li>Competition prep</li>
+                            <li>Advanced projects</li>
+                            <li>Collaboration</li>
+                            <li>Project management</li>
+                            <li>Presentations</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🛠️ Key Tools & Technologies</h4>
+                        <ul>
+                            <li>Advanced PyTorch/TensorFlow</li>
+                            <li>Cloud (AWS/GCP/Azure)</li>
+                            <li>Docker</li>
+                            <li>AI APIs</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🎯 Learning Outcomes</h4>
+                        <ul>
+                            <li>End-to-end solutions</li>
+                            <li>Competition readiness</li>
+                            <li>Team leadership</li>
+                            <li>Presentation skills</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 5: AI Entrepreneur -->
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-level">Level 5: AI Entrepreneur</div>
+                    <div class="program-title">
+                        <h3>AI Business & Leadership</h3>
+                        <div class="program-name">Launch Your AI Career or Startup</div>
+                    </div>
+                </div>
+
+                <div class="program-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Duration</div>
+                        <div class="meta-value">20–24 weeks</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Target Audience</div>
+                        <div class="meta-value">Entrepreneurs, researchers, consultants</div>
+                    </div>
+                </div>
+
+                <div class="program-details">
+                    <div class="detail-box">
+                        <h4>📚 Core Focus Areas</h4>
+                        <ul>
+                            <li>AI business models</li>
+                            <li>Consulting</li>
+                            <li>Research methods</li>
+                            <li>Teaching & mentorship</li>
+                            <li>Startups</li>
+                            <li>Responsible AI</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🛠️ Key Tools & Technologies</h4>
+                        <ul>
+                            <li>Business tools</li>
+                            <li>Research platforms</li>
+                            <li>Teaching/consulting frameworks</li>
+                            <li>Pitch decks</li>
+                        </ul>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🎯 Learning Outcomes</h4>
+                        <ul>
+                            <li>Launching AI business</li>
+                            <li>Consulting delivery</li>
+                            <li>Publishing research</li>
+                            <li>Teaching AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#register" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Enroll in a Program Today</a>
+            </div>
         </section>
 
         <section class="section" id="videos">
