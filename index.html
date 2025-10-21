@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAFUTURISTIC AI - Empowering Jamaica's Future</title>
+    <script src="https://js.stripe.com/v3/"></script>
     <style>
         * {
             margin: 0;
@@ -63,6 +64,9 @@
             background: rgba(10, 10, 15, 0.8);
             border-bottom: 3px solid;
             border-image: linear-gradient(90deg, #FFD700 0%, #009B48 50%, #000 100%) 1;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
@@ -153,16 +157,6 @@
 
         .music-icon {
             font-size: 1.5rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .music-control.playing .music-icon {
-            animation: bounce 0.6s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
         }
 
         h1 {
@@ -247,35 +241,178 @@
             transform: translateY(-3px);
         }
 
-        .mission {
+        .section {
             padding: 5rem 5%;
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .mission h2, .vision h2 {
+        .section h2 {
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 2rem;
+            text-align: center;
             background: linear-gradient(135deg, #FFD700 0%, #009B48 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .mission p, .vision p {
+        .section p {
             font-size: 1.2rem;
             line-height: 1.8;
             color: rgba(255, 255, 255, 0.8);
+            text-align: center;
             max-width: 800px;
             margin: 0 auto 3rem;
         }
 
-        .vision {
-            padding: 3rem 5% 5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
+        /* Video Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 155, 72, 0.4);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h3 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-align: left;
+            margin: 0;
+        }
+
+        /* Registration Form */
+        .form-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #009B48;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .success-message {
+            background: rgba(0, 155, 72, 0.2);
+            border: 2px solid #009B48;
+            color: #FFD700;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        /* Donation Section */
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .amount-btn {
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            color: #FFD700;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .amount-btn:hover {
+            background: rgba(0, 155, 72, 0.2);
+            border-color: #009B48;
+            transform: scale(1.05);
+        }
+
+        .amount-btn.selected {
+            background: linear-gradient(135deg, #FFD700 0%, #009B48 100%);
+            color: #000;
+            border-color: #FFD700;
+        }
+
+        .custom-amount {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        #card-element {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            margin: 2rem 0;
         }
 
         .features {
@@ -296,21 +433,6 @@
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
         }
 
         .feature-card:hover {
@@ -344,6 +466,7 @@
             line-height: 1.6;
         }
 
+        /* Team Section */
         .team-section {
             padding: 5rem 5%;
             max-width: 1400px;
@@ -442,20 +565,8 @@
             50% { opacity: 0.5; transform: scale(1.2); }
         }
 
-        .wave-accent {
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(90deg, #FFD700 0%, #009B48 50%, #000 100%);
-            opacity: 0.1;
-            clip-path: polygon(0 50%, 100% 30%, 100% 100%, 0 100%);
-        }
-
         @media (max-width: 768px) {
             nav {
-                padding: 1.5rem 5%;
                 flex-direction: column;
                 gap: 1rem;
             }
@@ -463,27 +574,16 @@
             .nav-links {
                 gap: 1rem;
                 font-size: 0.9rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
+            .form-container {
+                padding: 2rem 1.5rem;
             }
 
-            .music-control {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -500,9 +600,10 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#mission">Mission</a></li>
-                <li><a href="#programs">Programs</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#register">Register</a></li>
                 <li><a href="#team">Team</a></li>
-                <li><a href="#donate">Support Us</a></li>
+                <li><a href="#donate">Donate</a></li>
             </ul>
         </nav>
 
@@ -516,14 +617,13 @@
                     technology with our vibrant culture and limitless potential.
                 </p>
                 <div class="cta-buttons">
-                    <button class="btn btn-primary">Join Our Program</button>
-                    <button class="btn btn-secondary">Learn More</button>
+                    <a href="#register" class="btn btn-primary">Join Our Program</a>
+                    <a href="#videos" class="btn btn-secondary">Watch Videos</a>
                 </div>
             </div>
-            <div class="wave-accent"></div>
         </section>
 
-        <section class="mission" id="mission">
+        <section class="section" id="mission">
             <h2>Our Mission</h2>
             <p>
                 JAFUTURISTIC AI is dedicated to providing free, world-class artificial intelligence 
@@ -534,53 +634,179 @@
             </p>
         </section>
 
-        <section class="vision">
-            <h2>Our Vision</h2>
-            <p>
-                We envision a future where Jamaica is recognized as a global hub for AI innovation 
-                and technological excellence. Our vision is to empower every Jamaican youth with 
-                the knowledge, skills, and confidence to compete on the world stage, while using 
-                technology to uplift their communities and preserve our rich cultural heritage. 
-                We see a Jamaica where technology and tradition work hand in hand to create 
-                sustainable prosperity for all.
-            </p>
+        <section class="section" id="videos">
+            <h2>Learn From Our Videos</h2>
+            <p>Watch our educational content and see our impact in action</p>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/ukzFI9rgwfU" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h3>Introduction to AI</h3>
+                        <p>Learn the basics of artificial intelligence and how it's changing the world</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/aircAruvnKk" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h3>Neural Networks Explained</h3>
+                        <p>Understanding how machines learn and think</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/JMUxmLyrhSk" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h3>Student Success Stories</h3>
+                        <p>Meet our graduates and see where AI education can take you</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="features" id="programs">
+        <section class="section" id="register">
+            <h2>Register for Our Program</h2>
+            <p>Join hundreds of Jamaican youth learning AI and coding</p>
+            
+            <div class="form-container">
+                <div class="success-message" id="registrationSuccess">
+                    ✅ Registration submitted successfully! We'll contact you soon.
+                </div>
+                
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" min="10" max="25" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Parish/Location *</label>
+                        <select id="location" required>
+                            <option value="">Select Parish</option>
+                            <option value="kingston">Kingston</option>
+                            <option value="st-andrew">St. Andrew</option>
+                            <option value="st-thomas">St. Thomas</option>
+                            <option value="portland">Portland</option>
+                            <option value="st-mary">St. Mary</option>
+                            <option value="st-ann">St. Ann</option>
+                            <option value="trelawny">Trelawny</option>
+                            <option value="st-james">St. James</option>
+                            <option value="hanover">Hanover</option>
+                            <option value="westmoreland">Westmoreland</option>
+                            <option value="st-elizabeth">St. Elizabeth</option>
+                            <option value="manchester">Manchester</option>
+                            <option value="clarendon">Clarendon</option>
+                            <option value="st-catherine">St. Catherine</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Tech Experience Level *</label>
+                        <select id="experience" required>
+                            <option value="">Select Level</option>
+                            <option value="beginner">Beginner (No experience)</option>
+                            <option value="some">Some Experience (Basic coding)</option>
+                            <option value="intermediate">Intermediate (Built projects)</option>
+                            <option value="advanced">Advanced (Professional level)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="motivation">Why do you want to learn AI? *</label>
+                        <textarea id="motivation" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Registration</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section" id="donate">
+            <h2>Support Our Mission</h2>
+            <p>Your donation helps provide free AI education to Jamaican youth</p>
+            
+            <div class="form-container">
+                <div class="success-message" id="donationSuccess">
+                    ✅ Thank you for your generous donation! 🙏🏾
+                </div>
+                
+                <h3 style="color: #FFD700; text-align: center; margin-bottom: 1.5rem;">Select Amount</h3>
+                
+                <div class="donation-amounts">
+                    <button class="amount-btn" data-amount="10">$10</button>
+                    <button class="amount-btn" data-amount="25">$25</button>
+                    <button class="amount-btn" data-amount="50">$50</button>
+                    <button class="amount-btn" data-amount="100">$100</button>
+                    <button class="amount-btn" data-amount="250">$250</button>
+                    <button class="amount-btn" data-amount="500">$500</button>
+                </div>
+                
+                <div class="custom-amount">
+                    <div class="form-group">
+                        <label for="customAmount">Or Enter Custom Amount</label>
+                        <input type="number" id="customAmount" min="5" placeholder="Enter amount in USD">
+                    </div>
+                </div>
+                
+                <form id="donationForm">
+                    <div class="form-group">
+                        <label for="donorName">Full Name *</label>
+                        <input type="text" id="donorName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="donorEmail">Email Address *</label>
+                        <input type="email" id="donorEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Card Information *</label>
+                        <div id="card-element"></div>
+                        <div id="card-errors" style="color: #ff6b6b; margin-top: 0.5rem;"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="donateBtn">
+                        Donate Now
+                    </button>
+                    
+                    <p style="text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 1rem;">
+                        🔒 Secure payment powered by Stripe (Test Mode)
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <section class="features">
             <div class="feature-card">
                 <div class="feature-icon">💻</div>
                 <h3>Free AI Classes <span class="pulse-dot"></span></h3>
-                <p>Comprehensive courses in machine learning, coding, and AI fundamentals taught by industry professionals, completely free for all students.</p>
+                <p>Comprehensive courses in machine learning, coding, and AI fundamentals taught by industry professionals.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">👥</div>
                 <h3>Mentorship Program <span class="pulse-dot"></span></h3>
-                <p>Connect with tech leaders and AI experts who provide guidance, career advice, and real-world insights into the tech industry.</p>
+                <p>Connect with tech leaders and AI experts who provide guidance and real-world insights.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">🚀</div>
                 <h3>Project Labs <span class="pulse-dot"></span></h3>
-                <p>Build real AI projects that solve local problems, from agriculture tech to creative applications that celebrate Jamaican culture.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🎓</div>
-                <h3>Career Pathways <span class="pulse-dot"></span></h3>
-                <p>Job placement support, scholarship opportunities, and connections to tech companies looking for talented young developers.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>Community Impact <span class="pulse-dot"></span></h3>
-                <p>Use technology to uplift communities across Jamaica, building solutions for education, health, and economic development.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">✨</div>
-                <h3>Cultural Pride <span class="pulse-dot"></span></h3>
-                <p>Celebrate Jamaican heritage while learning tech skills, proving that innovation and culture go hand in hand.</p>
+                <p>Build real AI projects that solve local problems and celebrate Jamaican culture.</p>
             </div>
         </section>
 
@@ -592,7 +818,7 @@
                     <div class="team-photo">👤</div>
                     <h3>[Founder Name]</h3>
                     <div class="team-role">Founder</div>
-                    <p class="team-bio">[Add founder bio here - their background, passion for the mission, and vision for YardTech AI]</p>
+                    <p class="team-bio">[Add founder bio here - their background, passion for the mission, and vision for JAFUTURISTIC AI]</p>
                 </div>
 
                 <div class="team-member">
@@ -644,8 +870,8 @@
         <div class="music-icon">🎵</div>
     </div>
 
-    <audio id="reggaeMusic" loop preload="auto" crossorigin="anonymous" >
-        <source src="https://cdn.pixabay.com/audio/2024/10/13/audio_70668ccda5.mp3?filename=jamaica-groove-313301.mp3" type="audio/mpeg">
+    <audio id="reggaeMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2024/10/13/audio_70668ccda5.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -660,58 +886,206 @@
             });
         });
 
+        // Music control - FIXED VERSION
+        const reggaeMusic = document.getElementById('reggaeMusic');
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.querySelector('.music-icon');
+        let isPlaying = false;
+
+        musicControl.addEventListener('click', () => {
+            if (isPlaying) {
+                reggaeMusic.pause();
+                isPlaying = false;
+                musicIcon.textContent = '🎵';
+            } else {
+                reggaeMusic.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.textContent = '🎶';
+                }).catch(err => {
+                    console.error('Play error:', err);
+                    alert('Unable to play music. Click OK and try again.');
+                });
+            }
+        });
+
+        // Registration Form
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                age: document.getElementById('age').value,
+                location: document.getElementById('location').value,
+                experience: document.getElementById('experience').value,
+                motivation: document.getElementById('motivation').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('Registration submitted:', formData);
+            
+            // Show success message
+            document.getElementById('registrationSuccess').style.display = 'block';
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('registrationSuccess').style.display = 'none';
+            }, 5000);
+            
+            // In production, send to your backend:
+            // fetch('/api/register', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+        });
+
+        // Stripe Integration (Test Mode)
+        const stripe = Stripe('pk_test_51QH9SXP3Y8yC7VJl9mO6KDEaLjHb9X7VjSAKO4dLm3zKWxGbJ2Fx8kNhM5KZoY3aLJqGTwM7pQ6BnXh4eZQJmVyz00tQN8bGNO'); // Replace with your Stripe test key
+        const elements = stripe.elements();
+        const cardElement = elements.create('card', {
+            style: {
+                base: {
+                    color: '#fff',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: 'rgba(255, 255, 255, 0.5)',
+                    },
+                },
+            },
+        });
+        cardElement.mount('#card-element');
+
+        // Handle card errors
+        cardElement.on('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        // Donation amount selection
+        let selectedAmount = 0;
+        const amountButtons = document.querySelectorAll('.amount-btn');
+        const customAmountInput = document.getElementById('customAmount');
+
+        amountButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                amountButtons.forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedAmount = parseInt(this.dataset.amount);
+                customAmountInput.value = '';
+            });
+        });
+
+        customAmountInput.addEventListener('input', function() {
+            amountButtons.forEach(b => b.classList.remove('selected'));
+            selectedAmount = parseInt(this.value) || 0;
+        });
+
+        // Donation Form Submission
+        document.getElementById('donationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (selectedAmount < 5) {
+                alert('Please select or enter a donation amount of at least $5');
+                return;
+            }
+
+            const donateBtn = document.getElementById('donateBtn');
+            donateBtn.disabled = true;
+            donateBtn.textContent = 'Processing...';
+
+            // In TEST MODE - simulate successful payment
+            console.log('Donation Details:', {
+                amount: selectedAmount,
+                name: document.getElementById('donorName').value,
+                email: document.getElementById('donorEmail').value
+            });
+
+            // Simulate processing delay
+            setTimeout(() => {
+                document.getElementById('donationSuccess').style.display = 'block';
+                document.getElementById('donationForm').reset();
+                customAmountInput.value = '';
+                amountButtons.forEach(b => b.classList.remove('selected'));
+                selectedAmount = 0;
+                
+                donateBtn.disabled = false;
+                donateBtn.textContent = 'Donate Now';
+
+                setTimeout(() => {
+                    document.getElementById('donationSuccess').style.display = 'none';
+                }, 5000);
+            }, 2000);
+
+            /* 
+            === PRODUCTION CODE (Uncomment when you have a backend) ===
+            
+            try {
+                // Create payment intent on your server
+                const response = await fetch('/api/create-payment-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: selectedAmount * 100, // Stripe uses cents
+                        name: document.getElementById('donorName').value,
+                        email: document.getElementById('donorEmail').value
+                    })
+                });
+                
+                const { clientSecret } = await response.json();
+                
+                // Confirm payment with Stripe
+                const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                            name: document.getElementById('donorName').value,
+                            email: document.getElementById('donorEmail').value
+                        }
+                    }
+                });
+
+                if (error) {
+                    document.getElementById('card-errors').textContent = error.message;
+                    donateBtn.disabled = false;
+                    donateBtn.textContent = 'Donate Now';
+                } else if (paymentIntent.status === 'succeeded') {
+                    document.getElementById('donationSuccess').style.display = 'block';
+                    document.getElementById('donationForm').reset();
+                    cardElement.clear();
+                    amountButtons.forEach(b => b.classList.remove('selected'));
+                    selectedAmount = 0;
+                    
+                    donateBtn.disabled = false;
+                    donateBtn.textContent = 'Donate Now';
+                    
+                    setTimeout(() => {
+                        document.getElementById('donationSuccess').style.display = 'none';
+                    }, 5000);
+                }
+            } catch (err) {
+                console.error('Payment error:', err);
+                alert('Payment failed. Please try again.');
+                donateBtn.disabled = false;
+                donateBtn.textContent = 'Donate Now';
+            }
+            */
+        });
+
         // Parallax effect
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero-content');
             if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-                hero.style.opacity = 1 - (scrolled / 700);
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                hero.style.opacity = 1 - (scrolled / 800);
             }
-        });
-
-        // Music control
-        const reggaeMusic = document.getElementById('reggaeMusic');
-        const musicControl = document.getElementById('musicControl');
-        let isPlaying = false;
-
-        musicControl.addEventListener('click', () => {
-            if (isPlaying) {
-                music.pause();
-                isPlaying = false;
-                musicControl.querySelector('.music-icon').textContent = '🔇';
-                
-            } else {
-                music.play().then(() => {
-                    isPlaying = true;
-                    musicControl.querySelector('.music-icon').textContent = '🎶';
-                }).catch(err => {
-                    console.error('Play blocked by browser:', err);
-                    alert('Unable to play music. Please check your browser settings or try a different browser.');
-                });
-            }
-        });
-
-        // Auto-fade in elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card, .team-member').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
         });
     </script>
 </body>
